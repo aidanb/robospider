@@ -17,6 +17,7 @@ def buildUrl(url):
 # removes http:// and www and /*
 def stripUrl(url):
     url = re.sub('^http://', '', url)
+    url = re.sub('^https://', '', url)
     url = re.sub('^www\.', '', url)
     # remove slash and anything after it
     url = re.sub('\/.*$', '', url)
