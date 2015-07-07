@@ -26,6 +26,7 @@ for link in links:
     link = stripUrl(link)
     print link
 
+
 # check the url isn't in the database
 
 
