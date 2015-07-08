@@ -12,10 +12,14 @@ def getRobotstxt(url):
     # check that the site has not been crawled yet
     if not (getDateCrawled(url)[0]):
         robotsUrl = buildUrl(url)
-        req = requests.get(robotsUrl, timeout=30)
-        if req.status_code == 200:
-            robots = req.content
-        else:
+        try:
+            req = requests.get(robotsUrl, timeout=30)
+            if req.status_code == 200:
+                robots = req.content
+            else:
+                robots = None            
+        except requests.exceptions.Timeout:
+            print 'Timeout!'
             robots = None
         
         insertRobots(url, robots)
